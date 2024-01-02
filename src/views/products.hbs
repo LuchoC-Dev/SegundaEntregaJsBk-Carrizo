@@ -1,0 +1,39 @@
+<div class='container'>
+  <h1>Lista de Productos</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Título</th>
+        <th>Descripción</th>
+        <th>Precio</th>
+        <th>Ver más</th>
+        <th>Carrito</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each docs}}
+        <tr>
+          <td>{{this.id}}</td>
+          <td>{{this.title}}</td>
+          <td>{{this.description}}</td>
+          <td>{{this.price}}</td>
+          <td><a href='{{rootURL}}/{{this.id}}'>Ver más</a></td>
+          <td><a href='{{this.carritoLink}}'>Carrito</a></td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+
+  <div>
+    {{#if hasPrevPage}}
+      <a href='{{prevLink}}'>Anterior</a>
+    {{/if}}
+
+    <span>Página {{pagingCounter}} de {{totalPages}}</span>
+
+    {{#if hasNextPage}}
+      <a href='{{nextLink}}'>Siguiente</a>
+    {{/if}}
+  </div>
+</div>

@@ -1,0 +1,35 @@
+<div class='container'>
+  <h1>Detalles del Producto</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Título</th>
+        <th>Descripción</th>
+        <th>Precio</th>
+        <th>Thumbnail</th>
+        <th>Código</th>
+        <th>Stock</th>
+        <th>Estado</th>
+        <th>Categoría</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{product.title}}</td>
+        <td>{{product.description}}</td>
+        <td>{{product.price}}</td>
+        <td>
+          {{#each product.thumbnail}}
+            <p>{{this}}</p>
+          {{/each}}
+        </td>
+        <td>{{product.code}}</td>
+        <td>{{product.stock}}</td>
+        <td>{{product.status}}</td>
+        <td>{{product.category}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <a href='/carrito'>(+ Carrito)</a>
+</div>

@@ -1,6 +1,7 @@
 // Basic imports
 import express from 'express';
 import handlebars from 'express-handlebars';
+import Handlebars from 'handlebars';
 import { Server } from 'socket.io';
 import db from './dataBase.js';
 import { allowInsecurePrototypeAccess } from '@handlebars/allow-prototype-access';
@@ -13,6 +14,7 @@ import { PORT, rootURL } from './utils/env.js';
 import rootRouter from './routes/root.routes.js';
 import productsRouter from './routes/products.routes.js';
 import cartRouter from './routes/carts.routes.js';
+import productsViewsRouter from './routes/products.views.routes.js';
 
 // Express Init
 const app = express();
@@ -39,7 +41,7 @@ app.engine(
   handlebars.engine({
     extname: 'hbs',
     defaultLayout: 'main',
-    handlebars: allowInsecurePrototypeAccess(handlebars),
+    handlebars: allowInsecurePrototypeAccess(Handlebars),
   }),
 );
 app.set('view engine', 'hbs');
@@ -57,3 +59,4 @@ chatIo.on('connection', (socketClient) => {
 app.use('/', rootRouter);
 app.use('/', productsRouter);
 app.use('/', cartRouter);
+app.use('/', productsViewsRouter);
