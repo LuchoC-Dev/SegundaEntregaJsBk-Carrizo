@@ -35,10 +35,6 @@ const productSchema = new Schema({
     type: String,
     required: true,
   },
-  _id: {
-    type: Number,
-    required: true,
-  },
 });
 
 productSchema.plugin(mongoosePaginate);

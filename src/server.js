@@ -2,7 +2,7 @@
 import express from 'express';
 import handlebars from 'express-handlebars';
 import { Server } from 'socket.io';
-import entorno from './entorno.js';
+import db from './dataBase.js';
 import { allowInsecurePrototypeAccess } from '@handlebars/allow-prototype-access';
 
 // Utils imports
@@ -12,6 +12,7 @@ import { PORT, rootURL } from './utils/env.js';
 // Routes imports
 import rootRouter from './routes/root.routes.js';
 import productsRouter from './routes/products.routes.js';
+import cartRouter from './routes/carts.routes.js';
 
 // Express Init
 const app = express();
@@ -45,7 +46,7 @@ app.set('view engine', 'hbs');
 app.set('views', `${__dirSrc}/views`);
 
 // Mongroose
-entorno();
+db();
 
 // Comunicacion con el Socket // MOVER ESTO
 chatIo.on('connection', (socketClient) => {
@@ -55,3 +56,4 @@ chatIo.on('connection', (socketClient) => {
 // Routes
 app.use('/', rootRouter);
 app.use('/', productsRouter);
+app.use('/', cartRouter);

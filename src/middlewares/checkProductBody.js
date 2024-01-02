@@ -1,4 +1,4 @@
-import requestStatus from '../utils/requestStatus';
+import ResponseStatus from '../class/ResponseStatus.js';
 
 const checkProductBody = (req, res, next) => {
   try {
@@ -7,7 +7,7 @@ const checkProductBody = (req, res, next) => {
     }
   } catch (error) {
     console.error(error);
-    const status = requestStatus('Error', error.message);
+    const status = ResponseStatus.error(error.message);
     res.json(status);
   }
 };
@@ -62,11 +62,26 @@ const checkPrice = (price) => {
 };
 
 const checkThumbnail = (thumbnail) => {
-  const isThumbnail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(thumbnail); //chequear si es un email
-  if (!thumbnail || !isThumbnail) {
-    throw new Error(`Thumbnail ingresado invalido, debe ser un email valido`);
+  if (!Array.isArray(thumbnail)) {
+    throw new Error(`Thumbnail ingresado invalido, debe ser un array`);
   }
+  thumbnail.forEach((element) => {
+    const extension = element.split('.').reverse()[0];
+    if (!isImage(extension.toLowerCase())) {
+      throw new Error(
+        `Thumbnail ingresado invalido, debe ser una imagen valida`,
+      );
+    }
+  });
   return true;
+};
+
+const isImage = (value) => {
+  const validExtensions = ['jpg', 'jpeg', 'png'];
+  if (validExtensions.includes(value)) {
+    return true;
+  }
+  return false;
 };
 
 const checkCode = (code) => {
@@ -87,7 +102,8 @@ const checkStock = (stock) => {
 };
 
 const checkStatus = (status) => {
-  const isBoolean = status === 'true' || status === 'false';
+  const isBoolean =
+    typeof status === 'boolean' || status === 'true' || status === 'false';
   if (!isBoolean) {
     throw new Error(`Status ingresado invalido, debe ser un booleano`);
   }

@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 import { password, db_name } from './utils/env.js';
 
-const entorno = async () => {
+const db = async () => {
   try {
     // Mongroose Conection
     await mongoose.connect(
@@ -14,4 +14,4 @@ const entorno = async () => {
   }
 };
 
-export default entorno;
+export default db;
