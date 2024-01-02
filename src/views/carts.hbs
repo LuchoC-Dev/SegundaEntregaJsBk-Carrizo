@@ -1,0 +1,37 @@
+<div class='container'>
+  <h1>Tabla de Productos de carrito</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Título</th>
+        <th>Descripción</th>
+        <th>Precio</th>
+        <th>Imágenes</th>
+        <th>Código</th>
+        <th>Stock</th>
+        <th>Estado</th>
+        <th>Categoría</th>
+        <th>Cantidad</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each products}}
+        <tr>
+          <td>{{this.prodId.title}}</td>
+          <td>{{this.prodId.description}}</td>
+          <td>{{this.prodId.price}}</td>
+          <td>
+            {{#each this.prodId.thumbnail}}
+              <p>{{this}}</p>
+            {{/each}}
+          </td>
+          <td>{{this.prodId.code}}</td>
+          <td>{{this.prodId.stock}}</td>
+          <td>{{this.prodId.status}}</td>
+          <td>{{this.prodId.category}}</td>
+          <td>{{this.quantity}}</td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>

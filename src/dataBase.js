@@ -3,7 +3,7 @@ import { password, db_name } from './utils/env.js';
 
 const db = async () => {
   try {
-    // Mongroose Conection
+    // Mongoose Conection
     await mongoose.connect(
       `mongodb+srv://test:${password}@cluster0.jurxuwg.mongodb.net/${db_name}?retryWrites=true&w=majority`,
     );

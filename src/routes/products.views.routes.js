@@ -10,8 +10,16 @@ const path = '/products/';
 //GET products filter
 productsViewsRouter.get(path, checkProductsQuery, async (req, res) => {
   try {
-    const { parseLimit, parsePage, parseSort, parseQuery, limit, sort, query } =
-      req.query;
+    const {
+      parseLimit,
+      parsePage,
+      parseSort,
+      parseQuery,
+      limit,
+      sort,
+      query,
+      cartId,
+    } = req.query;
     const data = await ProductDao.getProducts(
       parseLimit,
       parsePage,
@@ -27,9 +35,10 @@ productsViewsRouter.get(path, checkProductsQuery, async (req, res) => {
       ? `${rootURL}${path}?limit=${limit}&&page=${data.nextPage}&&sort=${sort}&&query=${query}`
       : null;
 
+    const thisUrl = `${rootURL}${path}?limit=${limit}&&page=${data.page}&&sort=${sort}&&query=${query}`;
     res.render('products', {
       ...data,
-      rootURL,
+      cartId,
       css: 'products.css',
     });
   } catch (error) {
@@ -38,7 +47,7 @@ productsViewsRouter.get(path, checkProductsQuery, async (req, res) => {
   }
 });
 
-productsViewsRouter.post(path + ':id', async (req, res) => {
+productsViewsRouter.get(path + ':id', async (req, res) => {
   try {
     const { id } = req.params;
     const product = await ProductDao.getProductById(id);

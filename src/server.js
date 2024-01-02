@@ -15,6 +15,7 @@ import rootRouter from './routes/root.routes.js';
 import productsRouter from './routes/products.routes.js';
 import cartRouter from './routes/carts.routes.js';
 import productsViewsRouter from './routes/products.views.routes.js';
+import cartsViewsRouter from './routes/carts.views.routes.js';
 
 // Express Init
 const app = express();
@@ -60,3 +61,4 @@ app.use('/', rootRouter);
 app.use('/', productsRouter);
 app.use('/', cartRouter);
 app.use('/', productsViewsRouter);
+app.use('/', cartsViewsRouter);

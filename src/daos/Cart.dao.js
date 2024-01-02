@@ -70,6 +70,9 @@ class CartDao {
   static async clearAllCarts() {
     return await cartModel.deleteMany({});
   }
+  static async getLastCart() {
+    return await cartModel.findOne().sort({ _id: -1 });
+  }
 }
 
 export default CartDao;
