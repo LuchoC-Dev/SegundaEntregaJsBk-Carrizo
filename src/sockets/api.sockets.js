@@ -9,7 +9,7 @@ const apiSocket = (server) => {
 
   io.on('connection', async (socketClient) => {
     emitInitMessage(io, socketClient);
-    listener(listener);
+    listener(socketClient);
   });
 };
 
