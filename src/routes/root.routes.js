@@ -5,9 +5,7 @@ const rootViewRouter = Router();
 const path = '/';
 
 rootViewRouter.get(path, (req, res) => {
-  res.render('root', {
-    css: 'root.css',
-  });
+  res.send('Bienvenidos');
 });
 
 export default rootViewRouter;

@@ -2,7 +2,7 @@ import { Router } from 'express';
 import { rootURL } from '../utils/env.js';
 import ResponseStatus from '../class/ResponseStatus.js';
 import checkProductsQuery from '../middlewares/checkProductsQuery.js';
-import ProductDao from '../daos/Product.dao.js';
+import ProductDao from '../data/daos/Product.dao.js';
 
 const productsViewsRouter = Router();
 const path = '/products/';

@@ -1,4 +1,4 @@
-const socket = io();
+const socket = io('/api');
 const newMessage = { message: 'hola soy yo', type: 'success', sender: 'user' };
 const createCrudMessage = (author, method, action, body) => {
   return {

@@ -1,5 +1,3 @@
-import { emit } from './socket.js';
-
 const addNewMessage = (newMessageObject, lastMessageObject) => {
   console.log('hola');
   if (lastMessageObject) {

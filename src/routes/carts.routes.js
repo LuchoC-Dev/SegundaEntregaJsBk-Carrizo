@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import CartDao from '../daos/Cart.dao.js';
+import CartDao from '../data/daos/Cart.dao.js';
 import { rootURL } from '../utils/env.js';
 
 const cartsViewsRouter = Router();

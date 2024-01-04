@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import CartDao from '../daos/Cart.dao.js';
+import CartDao from '../../data/daos/Cart.dao.js';
 
 const cartRouter = Router();
 const path = '/api/carts/';

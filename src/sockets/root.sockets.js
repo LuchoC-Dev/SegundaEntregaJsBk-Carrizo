@@ -1,9 +1,9 @@
 import { Server } from 'socket.io';
-import MessageDao from '../daos/Message.dao.js';
 import CrudManager from '../class/CrudManager.js';
 
-const rootSocket = (server) => {
-  const io = new Server(server);
+const apiSocket = (server) => {
+  const rootIo = new Server(server);
+  const io = rootIo.of('/api');
   const emitAll = (eventName, value) => {
     io.emit(eventName, value);
   };
@@ -40,4 +40,4 @@ const crudMessagesListen = (socketClient) => {
   });
 };
 
-export default rootSocket;
+export default apiSocket;

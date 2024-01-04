@@ -1,6 +1,6 @@
-import CartDao from '../daos/Cart.dao.js';
-import MessageDao from '../daos/Message.dao.js';
-import ProductDao from '../daos/Product.dao.js';
+import CartDao from '../data/daos/Cart.dao.js';
+import MessageDao from '../data/daos/Message.dao.js';
+import ProductDao from '../data/daos/Product.dao.js';
 
 class CrudManager {
   static async main(message) {

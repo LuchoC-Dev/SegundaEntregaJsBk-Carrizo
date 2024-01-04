@@ -1,10 +1,10 @@
 import { Router } from 'express';
-import ProductDao from '../daos/Product.dao.js';
-import checkProductsQuery from '../middlewares/checkProductsQuery.js';
-import checkProductBody from '../middlewares/checkProductBody.js';
+import ProductDao from '../../data/daos/Product.dao.js';
+import checkProductsQuery from '../../middlewares/checkProductsQuery.js';
+import checkProductBody from '../../middlewares/checkProductBody.js';
 
-import { rootURL } from '../utils/env.js';
-import ResponseStatus from '../class/ResponseStatus.js';
+import { rootURL } from '../../utils/env.js';
+import ResponseStatus from '../../class/ResponseStatus.js';
 
 const productsRouter = Router();
 const path = '/api/products/';
