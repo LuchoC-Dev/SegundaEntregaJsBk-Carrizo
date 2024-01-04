@@ -1,16 +1,16 @@
 import cartModel from '../models/cart.model.js';
 
 class CartDao {
-  static async getAllCarts() {
+  static async getAll() {
     return await cartModel.find({});
   }
-  static async getCartById(id) {
+  static async getById(id) {
     return await cartModel.findById(id).populate('products.prodId');
   }
-  static async addCart(cart) {
+  static async addOne(cart) {
     return await cartModel.create(cart);
   }
-  static async createCart() {
+  static async create() {
     return await cartModel.create({});
   }
   static async addProductToCart(idCart, idProduct) {
@@ -28,7 +28,7 @@ class CartDao {
     await cart.save();
     return await cart.populate('products.prodId');
   }
-  static async updateCart(id, cart) {
+  static async update(id, cart) {
     return await cartModel
       .findByIdAndUpdate(id, cart, {
         new: true,
@@ -57,20 +57,20 @@ class CartDao {
       )
       .populate('products.prodId');
   }
-  static async deleteCart(id) {
+  static async deleteById(id) {
     return await cartModel.findByIdAndDelete(id);
   }
-  static async clearCart(id) {
+  static async clearProducts(id) {
     return await cartModel.findByIdAndUpdate(
       id,
       { products: [] },
       { new: true },
     );
   }
-  static async clearAllCarts() {
+  static async clear() {
     return await cartModel.deleteMany({});
   }
-  static async getLastCart() {
+  static async getLast() {
     return await cartModel.findOne().sort({ _id: -1 });
   }
 }

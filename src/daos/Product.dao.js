@@ -1,26 +1,26 @@
 import productModel from '../models/product.model.js';
 
 class ProductDao {
-  static async getAllProducts() {
+  static async getAll() {
     return await productModel.find();
   }
-  static async getProductById(id) {
+  static async getById(id) {
     return await productModel.findById(id);
   }
-  static async addProduct(product) {
+  static async add(product) {
     return await productModel.create(product);
   }
-  static async updateProduct(id, product) {
+  static async update(id, product) {
     return await productModel.findByIdAndUpdate(id, product, { new: true });
   }
-  static async deleteProduct(id) {
+  static async delete(id) {
     return await productModel.findByIdAndDelete(id);
   }
-  static async getProducts(limit, page, sort, query) {
+  static async getByConditions(limit, page, sort, query) {
     const data = await productModel.paginate(query, { limit, page, sort });
     return data;
   }
-  static async deleteAllProducts() {
+  static async deleteAll() {
     return await productModel.deleteMany({});
   }
 }

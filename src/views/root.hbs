@@ -1,0 +1,240 @@
+<div class='root-container'>
+  <section class='sec1'>
+    <div class='generate container'>
+      <h2 class='generate-title'>Generar</h2>
+
+      <div class='generate-container container-2'>
+        <div class='generate-messages container-3'>
+          <div class='generate-messages-container'>
+            <div class='generate-messages-label'>
+              <label for='generate-messages-input'>Ingresar la cantidad de
+                mensages aleatorios a generar</label>
+              <input
+                type='number'
+                id='generate-messages-input'
+                name='generate-product-quantity'
+              />
+            </div>
+            <div class='generate-messages-button'>
+              <button type='button' id='generate-messages-button'>Enviar datos</button>
+            </div>
+          </div>
+        </div>
+
+        <div class='generate-products container-3'>
+          <div class='generate-products-container'>
+            <div class='generate-products-label'>
+              <label for='generate-products-input'>Ingresar la cantidad de
+                productos aleatorios a generar</label>
+              <input
+                type='number'
+                id='generate-products-input'
+                name='generate-product-quantity'
+              />
+            </div>
+            <div class='generate-products-button'>
+              <button type='button' id='generate-products-button'>Enviar datos</button>
+            </div>
+          </div>
+        </div>
+
+        <div class='generate-carts container-3'>
+          <div class='generate-carts-container'>
+            <div class='generate-carts-label'>
+              <label for='generate-carts-input'>Ingresar la cantidad de carritos
+                aleatorios a generar</label>
+              <input
+                type='number'
+                id='generate-carts-input'
+                name='generate-carts-quantity'
+              />
+            </div>
+            <div class='generate-carts-button'>
+              <button type='button' id='generate-carts-button'>Enviar datos</button>
+            </div>
+          </div>
+        </div>
+
+        <div class='generate-productsInCart container-3'>
+          <div class='generate-productsInCart-container'>
+            <div class='generate-productsInCart-label'>
+              <label for='generate-productsInCart-input'>Ingresar la cantidad de
+                productos aleatorios a generar en el carrito</label>
+              <input
+                type='number'
+                id='generate-productsInCart-input'
+                name='generate-productsInCart-quantity'
+              />
+            </div>
+            <div class='generate-productsInCart-label'>
+              <label for='generate-cartSupplied-input'>Ingrese el ID del carrito
+                al que se van a generar productos</label>
+              <input
+                type='text'
+                id='generate-cartSupplied-input'
+                name='generate-cartSupplied-cartId'
+              />
+            </div>
+            <div class='generate-productsInCart-button'>
+              <button type='button' id='generate-productsInCart-button'>Enviar
+                datos</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class='add container'>
+      <h2 class='add-title'>Añadir</h2>
+
+      <div class='add-container container-2'>
+        <div class='add-productsInCart container-3'>
+          <div class='add-productsInCart-container'>
+            <div class='add-productsInCart-label'>
+              <label for='add-productsInCart-input'>Ingresa el ID del producto a
+                añadir:</label>
+              <input
+                type='text'
+                id='add-productsInCart-input'
+                name='add-productsInCart-productId'
+              />
+            </div>
+            <div class='add-productsInCart-label'>
+              <label for='add-cartSupplied-input'>Ingresa el ID el carrito al
+                que se va a añadir:</label>
+              <input
+                type='text'
+                id='add-cartSupplied-input'
+                name='add-cartSupplied-cartId'
+              />
+            </div>
+            <div class='add-productsInCart-button'>
+              <button type='button' id='add-productsInCart-button'>Enviar datos</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class='delete container'>
+      <h2 class='delete-title'>remover</h2>
+
+      <div class='delete-container container-2'>
+        <div class='delete-products container-3'>
+          <div class='delete-products-container'>
+            <div class='delete-products-label'>
+              <label for='delete-products-input'>Ingresa el ID del producto a
+                eliminar</label>
+              <input
+                type='text'
+                id='delete-products-input'
+                name='delete-products-productId'
+              />
+            </div>
+            <div class='delete-products-button'>
+              <button type='button' id='delete-products-button'>Enviar datos</button>
+            </div>
+          </div>
+        </div>
+
+        <div class='delete-carts container-3'>
+          <div class='delete-carts-container'>
+            <div class='delete-carts-label'>
+              <label for='delete-carts-input'>Ingresa el DI del carrito a
+                eliminar</label>
+              <input
+                type='text'
+                id='delete-carts-input'
+                name='delete-carts-cartId'
+              />
+            </div>
+            <div class='delete-carts-button'>
+              <button type='button' id='delete-carts-button'>Enviar datos</button>
+            </div>
+          </div>
+        </div>
+
+        <div class='delete-allProductsInCart container-3'>
+          <div class='delete-allProductsInCart-container'>
+            <div class='delete-allProductsInCart-label'>
+              <label for='delete-allProductsInCart-input'>Ingresa el ID del
+                carrito a eliminar todos los productos</label>
+              <input
+                type='text'
+                id='delete-allProductsInCart-input'
+                name='delete-allProductsInCart-cartId'
+              />
+            </div>
+            <div class='delete-allProductsInCart-button'>
+              <button type='button' id='delete-allProductsInCart-button'>Enviar
+                datos</button>
+            </div>
+          </div>
+        </div>
+
+        <div class='delete-allCarts container-3'>
+          <div class='delete-allCarts-container'>
+            <div class='delete-allCarts-label'>
+              <label for='delete-allCarts-input'>Ingresa "eliminarCarritos" para
+                eliminar todos los carritos</label>
+              <input
+                type='text'
+                id='delete-allCarts-input'
+                name='delete-allCarts-verificationText'
+              />
+            </div>
+            <div class='delete-allCarts-button'>
+              <button type='button' id='delete-allCarts-button'>Enviar datos</button>
+            </div>
+          </div>
+        </div>
+
+        <div class='delete-allProducts container-3'>
+          <div class='delete-allProducts-container'>
+            <div class='delete-allProducts-label'>
+              <label for='delete-allProducts-input'>Ingresa "eliminarProductos"
+                para eliminar todos los productos</label>
+              <input
+                type='text'
+                id='delete-allProducts-input'
+                name='delete-allProducts-verificationText'
+              />
+            </div>
+            <div class='delete-allProducts-button'>
+              <button type='button' id='delete-allProducts-button'>Enviar datos</button>
+            </div>
+          </div>
+        </div>
+
+        <div class='delete-allMessages container-3'>
+          <div class='delete-allMessages-container'>
+            <div class='delete-allMessages-label'>
+              <label for='delete-allMessages-input'>Ingresa "eliminarMensajes"
+                para eliminar todos los mensajes</label>
+              <input
+                type='text'
+                id='delete-allMessages-input'
+                name='delete-allMessages-verificationText'
+              />
+            </div>
+            <div class='delete-allMessages-button'>
+              <button type='button' id='delete-allMessages-button'>Enviar datos</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+  <section class='sec2'>
+    <div class='windows'>
+      <div class='messages-container' id='messages-container'></div>
+      <div class='lastMessage-container' id='lastMessage-container'></div>
+    </div>
+  </section>
+</div>
+<script src='/socket.io/socket.io.js'></script>
+<script type='module' src='/js/root/main.js'></script>

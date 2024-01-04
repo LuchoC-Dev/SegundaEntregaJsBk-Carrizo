@@ -2,7 +2,6 @@
 import express from 'express';
 import handlebars from 'express-handlebars';
 import Handlebars from 'handlebars';
-import { Server } from 'socket.io';
 import db from './dataBase.js';
 import { allowInsecurePrototypeAccess } from '@handlebars/allow-prototype-access';
 
@@ -11,11 +10,13 @@ import { __dirProyecto, __dirSrc } from './utils/dirnames.js';
 import { PORT, rootURL } from './utils/env.js';
 
 // Routes imports
-import rootRouter from './routes/root.routes.js';
-import productsRouter from './routes/products.routes.js';
-import cartRouter from './routes/carts.routes.js';
+import rootRouter from './routes/root.api.routes.js';
+import productsRouter from './routes/products.api.routes.js';
+import cartRouter from './routes/carts.api.routes.js';
 import productsViewsRouter from './routes/products.views.routes.js';
 import cartsViewsRouter from './routes/carts.views.routes.js';
+import rootViewRouter from './routes/root.views.routes.js';
+import rootSocket from './sockets/root.sockets.js';
 
 // Express Init
 const app = express();
@@ -33,8 +34,7 @@ const httpServer = app.listen(PORT, () => {
 });
 
 // Socket.io Init
-const io = new Server(httpServer);
-const chatIo = io.of('/chat');
+rootSocket(httpServer);
 
 // Handlebars Init
 app.engine(
@@ -51,14 +51,10 @@ app.set('views', `${__dirSrc}/views`);
 // Mongroose
 db();
 
-// Comunicacion con el Socket // MOVER ESTO
-chatIo.on('connection', (socketClient) => {
-  console.log(`Nuevo cliente conectado |-->| ID:${socketClient.id}`);
-});
-
 // Routes
 app.use('/', rootRouter);
 app.use('/', productsRouter);
 app.use('/', cartRouter);
+app.use('/', rootViewRouter);
 app.use('/', productsViewsRouter);
 app.use('/', cartsViewsRouter);
