@@ -4,15 +4,23 @@ class CartDao {
   static async getAll() {
     return await cartModel.find({});
   }
-  static async getById(id) {
+  static async get(id) {
     return await cartModel.findById(id).populate('products.prodId');
   }
-  static async addOne(cart) {
+  static async add(cart) {
     return await cartModel.create(cart);
   }
   static async create() {
-    return await cartModel.create({});
+    return await cartModel.create({ products: [] });
   }
+  static async createMany(quantity) {
+    const carts = [];
+    for (let index = 0; index < quantity; index++) {
+      carts.push(await this.create());
+    }
+    return carts;
+  }
+
   static async addProductToCart(idCart, idProduct) {
     const cart = await cartModel.findById(idCart);
 
@@ -57,7 +65,7 @@ class CartDao {
       )
       .populate('products.prodId');
   }
-  static async deleteById(id) {
+  static async delete(id) {
     return await cartModel.findByIdAndDelete(id);
   }
   static async clearProducts(id) {

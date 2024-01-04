@@ -28,13 +28,13 @@ class CrudManager {
 
     const isValidAction = (method, action) => {
       if (method === 'get') {
-        const validGetActions = ['getAll', 'getById'];
+        const validGetActions = ['getAll', 'get'];
         return validGetActions.includes(action);
       } else if (method === 'post') {
         const validPostActions = ['add', 'create', 'createMany'];
         return validPostActions.includes(action);
       } else if (method === 'put') {
-        const validPutActions = ['updateById'];
+        const validPutActions = ['update'];
         return validPutActions.includes(action);
       } else if (method === 'delete') {
         const validDeleteActions = ['delete', 'clear'];

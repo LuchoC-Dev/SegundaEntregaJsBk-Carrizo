@@ -1,5 +1,7 @@
 import { createCrudMessage, emit } from './socket.js';
 
+// Main
+
 const eventsInit = () => {
   eventGenerateMessages();
   eventGenerateProducts();
@@ -8,6 +10,8 @@ const eventsInit = () => {
   eventDeleteAllProducts();
   eventDeleteAllCarts();
 };
+
+// Templetes
 
 const eventGenerateTemplete = (templete) => {
   const generateButton = document.getElementById(`generate-${templete}-button`);
@@ -45,6 +49,8 @@ const eventDeleteAllTemplete = (templete, trueValue) => {
     emit('crudMessages', message);
   });
 };
+
+// Events
 
 const eventGenerateMessages = () => {
   eventGenerateTemplete('messages');

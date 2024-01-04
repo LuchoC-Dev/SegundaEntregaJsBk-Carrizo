@@ -20,7 +20,7 @@ import rootViewRouter from './routes/root.routes.js';
 import db from './dataBase.js';
 
 // sockets imports
-import apiSocket from './sockets/root.sockets.js';
+import apiSocket from './sockets/api.sockets.js';
 import apiViewRouter from './routes/api/api.routes.js';
 
 // Express Init

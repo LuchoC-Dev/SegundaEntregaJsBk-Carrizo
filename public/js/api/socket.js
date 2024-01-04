@@ -1,16 +1,4 @@
 const socket = io('/api');
-const newMessage = { message: 'hola soy yo', type: 'success', sender: 'user' };
-const createCrudMessage = (author, method, action, body) => {
-  return {
-    author: author,
-    method: method,
-    action: action,
-    body: body,
-  };
-};
-const emit = (eventName, value) => {
-  socket.emit(eventName, value);
-};
 
 const socketListener = () => {
   listenServerStatus();
@@ -27,6 +15,18 @@ const listenMessages = () => {
   socket.on('message', (message) => {
     console.log(message);
   });
+};
+
+const createCrudMessage = (author, method, action, body) => {
+  return {
+    author: author,
+    method: method,
+    action: action,
+    body: body,
+  };
+};
+const emit = (eventName, value) => {
+  socket.emit(eventName, value);
 };
 
 export { socketListener, emit, createCrudMessage };

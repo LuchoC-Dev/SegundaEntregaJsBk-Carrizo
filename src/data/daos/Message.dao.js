@@ -4,7 +4,7 @@ class MessageDao {
   static async getAll() {
     return await messageModel.find();
   }
-  static async getById(id) {
+  static async get(id) {
     return await messageModel.findById(id);
   }
   static async add(message) {
@@ -32,6 +32,9 @@ class MessageDao {
   }
   static async getLast() {
     return await messageModel.findOne().sort({ _id: -1 });
+  }
+  static async delete(id) {
+    return await messageModel.findByIdAndDelete(id);
   }
   static async clear() {
     return await messageModel.deleteMany({});
