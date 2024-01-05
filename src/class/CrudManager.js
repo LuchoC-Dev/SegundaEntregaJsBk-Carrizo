@@ -1,6 +1,7 @@
 import CartDao from '../data/daos/Cart.dao.js';
 import MessageDao from '../data/daos/Message.dao.js';
 import ProductDao from '../data/daos/Product.dao.js';
+import CrudStatus from './CrudStatus.js';
 
 class CrudManager {
   static async main(message) {
@@ -49,7 +50,7 @@ class CrudManager {
       return validDaos.includes(dao);
     };
 
-    const start = async (message) => {
+    const start = async () => {
       const { action, body } = message;
       const { dao, id, value } = body;
       const daoMap = {
@@ -72,9 +73,15 @@ class CrudManager {
       if (!isValidMessage(message)) {
         throw new Error('El mensage ingresado es invalido');
       }
-      return await start(message);
+      const response = await start(message);
+      if (!response) {
+        throw new Error('No se ha podido realizar la consulta');
+      }
+      const resultMessage = `Accion "${message.action}" realizada con exito`;
+      return CrudStatus.make(message, response, resultMessage);
     } catch (error) {
       console.error(error);
+      return CrudStatus.error(message, error.message);
     }
   }
 }

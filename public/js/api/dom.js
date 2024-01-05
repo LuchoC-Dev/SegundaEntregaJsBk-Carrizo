@@ -1,16 +1,20 @@
 const addNewMessage = (newMessageObject, lastMessageObject) => {
-  console.log('hola');
   if (lastMessageObject) {
     const {
+      author: lastAuthor,
+      status: lastStatus,
       message: lastMessage,
-      type: lastType,
-      sender: lastSender,
     } = lastMessageObject;
-    addToMessages(lastMessage, lastType, lastSender);
+    addToMessages(lastAuthor, lastStatus, lastMessage);
   }
 
-  const { message, type, sender } = newMessageObject;
-  addToLastMessage(message, type, sender);
+  const { author, status, message } = newMessageObject;
+  addToLastMessage(author, status, message);
+};
+
+const setMessages = (messages) => {
+  removeAllMessages();
+  generateMessages(messages);
 };
 
 const generateMessages = (messages) => {
@@ -18,11 +22,11 @@ const generateMessages = (messages) => {
     return;
   }
   messages.forEach((object, index) => {
-    const { type, message, sender } = object;
+    const { author, status, message } = object;
     if (isLastIndex(messages, index)) {
-      addToLastMessage(message, type, sender);
+      addToLastMessage(author, status, message);
     } else {
-      addToMessages(message, type, sender);
+      addToMessages(author, status, message);
     }
   });
 };
@@ -31,21 +35,21 @@ const isLastIndex = (array, index) => {
   return index === array.length - 1;
 };
 
-const addToMessages = (message, type, sender) => {
+const addToMessages = (author, status, message) => {
   const messagesContainer = document.getElementById('messages-container');
   const divMessage = document.createElement('div');
   divMessage.textContent = message;
-  divMessage.className = `messages type-${type} sender-${sender}`;
+  divMessage.className = `messages type-${status} sender-${author}`;
   messagesContainer.appendChild(divMessage);
 };
 
-const addToLastMessage = (message, type, sender) => {
+const addToLastMessage = (author, status, message) => {
   const lastMessageContainer = document.getElementById('lastMessage-container');
   removeLastMessage();
 
   const divMessage = document.createElement('div');
   divMessage.textContent = message;
-  divMessage.className = `lastMessage type-${type} sender-${sender}`;
+  divMessage.className = `lastMessage type-${status} sender-${author}`;
   lastMessageContainer.appendChild(divMessage);
 };
 
@@ -57,4 +61,17 @@ const removeLastMessage = () => {
   }
 };
 
-export { addNewMessage, generateMessages };
+const removeMessages = () => {
+  const messagesContiner = document.getElementById('messages-container');
+
+  while (messagesContiner.firstChild) {
+    messagesContiner.removeChild(messagesContiner.firstChild);
+  }
+};
+
+const removeAllMessages = () => {
+  removeMessages();
+  removeLastMessage();
+};
+
+export { setMessages, addNewMessage, generateMessages };

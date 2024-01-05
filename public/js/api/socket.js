@@ -1,8 +1,14 @@
+import { addNewMessage, setMessages } from './dom.js';
+
 const socket = io('/api');
 
+let consoleMessages = [];
+
 const socketListener = () => {
+  listenConsoleMessagesSet();
   listenServerStatus();
   listenMessages();
+  listenConsoleMessagesAdd();
 };
 
 const listenServerStatus = () => {
@@ -14,6 +20,21 @@ const listenServerStatus = () => {
 const listenMessages = () => {
   socket.on('message', (message) => {
     console.log(message);
+  });
+};
+
+const listenConsoleMessagesAdd = () => {
+  socket.on('consoleMessages-add', (message) => {
+    addNewMessage(message, consoleMessages.reverse()[0]);
+    consoleMessages.push(message);
+  });
+};
+
+const listenConsoleMessagesSet = () => {
+  socket.on('consoleMessages-set', (messages) => {
+    consoleMessages = [];
+    setMessages(messages);
+    consoleMessages.push(...messages);
   });
 };
 
